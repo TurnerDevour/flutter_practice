@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/newRoute.dart';
+import 'package:flutter_practice/text.dart';
 import 'package:flutter_practice/tipRoute.dart';
 
 void main() {
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(),
       routes: {
-        "new_route": (context) => const NewRoute()
+        "new_route": (context) => const NewRoute(),
+        "text_demo": (context) => const TextDemo()
       },
     );
   }
@@ -37,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("第一个Flutter Application"),
+        title: const Text("Flutter Application"),
       ),
       body: Container(
         child: Column(
@@ -46,23 +48,26 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text("打开第一个路由菜单"),
               onPressed: () {
                 Navigator.pushNamed(context, "new_route");
-                // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                //   return const NewRoute();
-                // }));
               },
             ),
             ElevatedButton(
               onPressed: () async {
                 var result = await Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
-                      return const TipRoute(text: "你好，我是tip参数");
-                    }));
+                  return const TipRoute(text: "你好，我是tip参数");
+                }));
                 if (kDebugMode) {
                   print("返回值：$result");
                 }
               },
               child: const Text("打开提示页"),
             ),
+            TextButton(
+              child: const Text("打开文本样式"),
+              onPressed: () {
+                Navigator.pushNamed(context, "text_demo");
+              },
+            )
           ],
         ),
       ),
