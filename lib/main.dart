@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/newRoute.dart';
-import 'package:flutter_practice/text.dart';
+import 'package:flutter_practice/03_button.dart';
+import 'package:flutter_practice/01_newRoute.dart';
+import 'package:flutter_practice/02_text.dart';
+import 'package:flutter_practice/04_iconAndImage.dart';
 import 'package:flutter_practice/tipRoute.dart';
 
 void main() {
@@ -21,7 +23,9 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(),
       routes: {
         "new_route": (context) => const NewRoute(),
-        "text_demo": (context) => const TextDemo()
+        "text_demo": (context) => const TextDemo(),
+        "button_demo": (context) => const ButtonDemo(),
+        "icon_image_demo": (context) => const IconAndImageDemo(),
       },
     );
   }
@@ -45,12 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             TextButton(
-              child: const Text("打开第一个路由菜单"),
+              child: const Text("打开第一个路由菜单页面"),
               onPressed: () {
                 Navigator.pushNamed(context, "new_route");
               },
             ),
-            ElevatedButton(
+            TextButton(
               onPressed: () async {
                 var result = await Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
@@ -60,12 +64,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   print("返回值：$result");
                 }
               },
-              child: const Text("打开提示页"),
+              child: const Text("打开提示页面"),
             ),
             TextButton(
-              child: const Text("打开文本样式"),
+              child: const Text("打开文本样式页面"),
               onPressed: () {
                 Navigator.pushNamed(context, "text_demo");
+              },
+            ),
+            TextButton(
+              child: const Text("打开按钮页面"),
+              onPressed: () {
+                Navigator.pushNamed(context, "button_demo");
+              },
+            ),
+            TextButton(
+              child: const Text("打开图片和Icon页面"),
+              onPressed: () {
+                Navigator.pushNamed(context, "icon_image_demo");
               },
             )
           ],
